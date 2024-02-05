@@ -1,0 +1,46 @@
+seed: 1
+record_video: yes
+
+environment:
+  render: True
+  num_envs: 100
+  eval_every_n: 7
+  num_threads: 30
+  simulation_dt: 0.0025
+  control_dt: 0.01
+  max_time: 15
+  action_std: 0.1
+  reward:
+    torque:
+      coeff: -4e-5
+    height:
+      coeff: 0.5
+    uprightness:
+      coeff: -0.3
+    velocity_to_opponent:
+      coeff: 0.3
+    facing:
+      coeff: 0.2
+    inside:
+      coeff: 0.1
+    outside:
+      coeff: -0.1
+    radial:
+      coeff: 0.3
+    force:
+      coeff: 4e-5
+    pushing:
+      coeff: 0.2
+#    pushing_out:
+#      coeff: 0.1
+#    getting_pushed:
+#      coeff: -0.1
+    win:
+      coeff: 10
+
+evaluation:
+  iteration: 450 #Write your final submit policy iteration. ex) if you submit full_10000.pt
+
+architecture:
+  policy_net: [128, 128]
+  value_net: [128, 128]
